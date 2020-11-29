@@ -1,0 +1,56 @@
+syntax = "proto3";
+option java_package = "com.tca.netty.wechat.api.protobuf";
+
+message ProtoMsg {
+
+    // 消息类型枚举
+    enum HeadType {
+        // 登录请求响应
+        LOGIN_REQUEST = 0;
+        LOGIN_RESPONSE = 1;
+        // 登出请求响应
+        LOGOUT_REQUEST = 2;
+        LOGOUT_RESPONSE = 3;
+        // 心跳请求响应
+        KEEPALIVE_REQEUST = 4;
+        KEEPALIVE_RESPONSE = 5;
+        // 聊天消息请求响应
+        MESSAGE_REQUEST = 6;
+        MESSAGE_RESPONSE = 7;
+        // 服务器通知
+        MESSAGE_NOTIFICATION = 8;
+    }
+
+    // 登录请求体
+    message LoginRequest {
+        string username = 1;
+        string password = 2;
+    }
+    // 登录响应
+    message LoginResponse {
+        uint32 code = 1;
+        string msg = 2;
+    }
+
+    // 消息请求
+    message MessageRequest {
+        string msgId = 1;
+        string from = 2;
+        string to = 3;
+        uint64 time = 4;
+        uint32 msgType = 5;
+        string content = 6;
+    }
+
+    // 消息响应
+    message MessageResponse {
+        uint32 code = 1;
+        string msg = 2;
+    }
+
+    message MessageNotification {
+        uint32 msgType = 1;
+        string content = 2;
+        uint64 time = 3;
+    }
+}
