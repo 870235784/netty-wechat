@@ -9,6 +9,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
+import io.netty.handler.codec.json.JsonObjectDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
@@ -68,6 +69,7 @@ public class WechatServer {
                                     0, wechatServerConfig.getMessageHeadLength(), 0, wechatServerConfig.getMessageHeadLength()))
                             // 字符串解码器
                             .addLast(new StringDecoder())
+                            .addLast(new JsonObjectDecoder())
                             // 消息头编码器
                             .addLast(new LengthFieldPrepender(wechatServerConfig.getMessageHeadLength()))
                             // 字符串编码器

@@ -12,10 +12,29 @@
     <artifactId>netty-wechat-client</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>tca</groupId>
+            <artifactId>common-log-springboot-log4j2</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!-- web启动器, 对springmvc, servlet等支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- springboot 注解支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

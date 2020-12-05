@@ -1,0 +1,9 @@
+wechat:
+  server:
+    port: 26900
+    boss-num: 1
+    logback: 128
+    message-max-length: 1024
+    message-head-length: 4
+    heartbeat-time: 30
+    idle-time: 100
